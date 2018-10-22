@@ -1,0 +1,3 @@
+rootProject.name = 'icpna'
+
+include ':app'
