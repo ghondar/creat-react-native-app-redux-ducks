@@ -1,7 +1,24 @@
+/**
+ * @format
+ * @flow
+ */
+
 import Duck from 'extensible-duck'
 import produce from 'immer'
 
-export default function createDuck({ namespace, store, initialState = {}, creators, selectors }) {
+export default function createDuck({
+  namespace,
+  store,
+  initialState = {},
+  selectors,
+  creators
+}: {
+  namespace: string,
+  store: string,
+  initialState: Object,
+  selectors?: Function,
+  creators?: Function
+}) {
   return new Duck({
     namespace,
     store,

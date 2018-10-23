@@ -1,10 +1,21 @@
+/**
+ * @format
+ * @flow
+ */
+
 import React, { Component } from 'react'
 import { View, Text, Button } from 'react-native'
 import { connect } from 'react-redux'
 
 import homeDucks from 'reducers/home'
 
-class Home extends Component {
+type Props = {
+  home: Object,
+  addCounter: Function,
+  removeCounter: Function
+}
+
+class Home extends Component<Props> {
   render() {
     const {
       home: { counter },

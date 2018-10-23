@@ -4,15 +4,18 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "format": "prettier-eslint --write \"src/**/*.js\" && eslint . --ext .js --fix",
+    "test": "jest",
+    "lint-staged": "lint-staged",
+    "flow": "flow"
   },
-  "_moduleAliases": {
-    "utils": "./src/utils",
-    "lib": "./src/lib",
-    "reducers": "./src/reducers",
-    "sagas": "./src/sagas",
-    "components": "./src/components",
-    "containers": "./src/containers"
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "src/**/*.js": [
+      "prettier-eslint --write \"src/**/*.js\"",
+      "eslint . --ext .js --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "extensible-duck": "1.4.0",
@@ -32,8 +35,11 @@
     "babel-plugin-module-resolver": "^3.1.1",
     "eslint": "5.7.0",
     "eslint-plugin-react": "7.11.1",
+    "flow-bin": "0.78.0",
     "jest": "23.6.0",
+    "lint-staged": "^7.3.0",
     "metro-react-native-babel-preset": "0.48.1",
+    "pre-commit": "^1.2.2",
     "prettier-eslint-cli": "4.7.1",
     "react-test-renderer": "16.6.0-alpha.8af6728"
   },
